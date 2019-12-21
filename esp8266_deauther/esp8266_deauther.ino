@@ -45,8 +45,6 @@ Scan   scan;
 Attack attack;
 CLI    cli;
 
-#include "wifi.h"
-
 uint32_t autosaveTime = 0;
 uint32_t currentTime  = 0;
 
@@ -85,19 +83,6 @@ void setup() {
     // load settings
     settings.load();
 
-    // set mac for access point
-    wifi_set_macaddr(SOFTAP_IF, settings.getMacAP());
-
-    // start WiFi
-    WiFi.mode(WIFI_OFF);
-    wifi_set_opmode(STATION_MODE);
-    wifi_set_promiscuous_rx_cb([](uint8_t* buf, uint16_t len) {
-        scan.sniffer(buf, len);
-    });
-
-    // set mac for station
-    wifi_set_macaddr(STATION_IF, settings.getMacSt());
-
     // load everything else
     names.load();
     ssids.load();
@@ -109,12 +94,6 @@ void setup() {
     // set channel
     setWifiChannel(settings.getChannel());
 
-    // load Wifi settings: SSID, password,...
-    #ifdef DEFAULT_SSID
-    if (settings.getSSID() == "pwned") settings.setSSID(DEFAULT_SSID);
-    #endif // ifdef DEFAULT_SSID
-    loadWifiConfigDefaults();
-
     // dis/enable serial command interface
     if (settings.getCLI()) {
         cli.enable();
@@ -123,9 +102,6 @@ void setup() {
         Serial.flush();
         Serial.end();
     }
-
-    // start access point/web interface
-    if (settings.getWebInterface()) startAP();
 
     // STARTED
     prntln(SETUP_STARTED);
@@ -141,7 +117,6 @@ void loop() {
     currentTime = millis();
 
     led.update();    // update LED color
-    wifiUpdate();    // manage access point
     attack.update(); // run attacks
     cli.update();    // read and run serial input
     scan.update();   // run scan

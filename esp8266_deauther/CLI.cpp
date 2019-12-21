@@ -745,7 +745,6 @@ void CLI::runCommand(String input) {
             prnt(int(f.size()));
             prntln(str(CLI_BYTES));
         }
-        printWifiStatus();
         prntln(CLI_SYSTEM_FOOTER);
     }
 
@@ -1003,7 +1002,6 @@ void CLI::runCommand(String input) {
             // ------- loop function ----- //
             currentTime = millis();
 
-            wifiUpdate();    // manage access point
             scan.update();   // run scan
             attack.update(); // run attacks
             ssids.update();  // run random mode, if enabled
@@ -1098,41 +1096,11 @@ void CLI::runCommand(String input) {
     // ===== START/STOP AP ===== //
     // startap [-p <path][-s <ssid>] [-pswd <password>] [-ch <channel>] [-h] [-cp]
     else if (eqlsCMD(0, CLI_STARTAP)) {
-        String path          = String(F("/web"));
-        String ssid          = settings.getSSID();
-        String password      = settings.getPassword();
-        int    ch            = wifi_channel;
-        bool   hidden        = settings.getHidden();
-        bool   captivePortal = settings.getCaptivePortal();
-
-        for (int i = 1; i < list->size(); i++) {
-            if (eqlsCMD(i, CLI_PATH)) {
-                i++;
-                path = list->get(i);
-            } else if (eqlsCMD(i, CLI_SSID)) {
-                i++;
-                ssid = list->get(i);
-            } else if (eqlsCMD(i, CLI_PASSWORD)) {
-                i++;
-                password = list->get(i);
-            } else if (eqlsCMD(i, CLI_CHANNEL)) {
-                i++;
-                ch = list->get(i).toInt();
-            } else if (eqlsCMD(i, CLI_HIDDEN)) {
-                hidden = true;
-            } else if (eqlsCMD(i, CLI_CAPTIVEPORTAL)) {
-                captivePortal = true;
-            } else {
-                parameterError(list->get(1));
-            }
-        }
-
-        startAP(path, ssid, password, ch, hidden, captivePortal);
+       
     }
 
     // stopap
     else if (eqlsCMD(0, CLI_STOPAP)) {
-        stopAP();
     }
 
     // ===== SCREEN ===== //
