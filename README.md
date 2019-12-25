@@ -9,8 +9,8 @@ The following modules were removed from the original project:
 - Web interface with all the code.
 I decided to remove this not only because of the size (which might be a problem for some boards) but because it's an extremely heavy feature for such simple boards, unreliable and completely unnecessary for the main goal.
 
-- Wifi module (pwned)
-Removed because its purpose was to serve the web interface, also it was creating more workload for the board and exposing its existence.
+- Wifi module (pwned).
+Removed because its main purpose was to serve the web interface, by doing that it was creating more workload for the board and exposing its existence to the world which can be a preatty big vulnerability.
 
 Compared compiled sizes
 
