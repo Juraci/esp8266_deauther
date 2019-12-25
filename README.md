@@ -9,6 +9,11 @@ The following modules were removed from the original project:
 - Web interface with all the code
 - Wifi module (pwned)
 
+Compared compiled sizes
+
+Original  Sketch uses 703380 bytes (67%) of program storage space. Maximum is 1044464 bytes
+Lite:     Sketch uses 568804 bytes (54%) of program storage space. Maximum is 1044464 bytes
+
 ## How does it work?
 
 The basic method of interaction is the serial interface.The behavior and features should be exactly the same as the original.
