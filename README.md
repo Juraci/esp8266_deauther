@@ -11,8 +11,8 @@ The following modules were removed from the original project:
 
 Compared compiled sizes
 
-Original  Sketch uses 703380 bytes (67%) of program storage space. Maximum is 1044464 bytes
-Lite:     Sketch uses 568804 bytes (54%) of program storage space. Maximum is 1044464 bytes
+- Original  Sketch uses 703380 bytes (67%) of program storage space. Maximum is 1044464 bytes
+- Lite:     Sketch uses 568804 bytes (54%) of program storage space. Maximum is 1044464 bytes
 
 ## How does it work?
 
