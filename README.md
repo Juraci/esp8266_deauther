@@ -16,7 +16,7 @@ Compared compiled sizes
 
 ## How does it work?
 
-The basic method of interaction is the serial interface.The behavior and features should be exactly the same as the original.
+The basic method of interaction is the serial interface.
 
 ## Future development
 
