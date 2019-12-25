@@ -6,8 +6,8 @@ This project is a fork from the original [spacehuhn/esp8266_deauther](https://gi
 
 The following modules were removed from the original project:
 
-- Web interface with all the code
-I decided to remove this not because of the size (which might be a problem for some boards) but because it is an extremely heavy feature, unreliable and completely unnecessary for the main goal.
+- Web interface with all the code.
+I decided to remove this not only because of the size (which might be a problem for some boards) but because it's an extremely heavy feature for such simple boards, unreliable and completely unnecessary for the main goal.
 
 - Wifi module (pwned)
 Removed because its purpose was to serve the web interface, also it was creating more workload for the board and exposing its existence.
